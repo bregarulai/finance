@@ -20,3 +20,7 @@ export const routes = [
     label: "Settings",
   },
 ];
+
+export enum QKey {
+  ACCOUNTS = "accounts",
+}
