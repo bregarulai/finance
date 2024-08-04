@@ -1,7 +1,14 @@
+"use client";
+
+import { Button } from "@/components/ui/button";
+import { useNewAccount } from "@/features/accounts/hooks/useNewAccount";
+
 const Home = () => {
+  const { onOpen } = useNewAccount();
   return (
-    <div className="flex min-h-screen flex-col items-center justify-between p-24">
+    <div>
       <p>Home Dashboard</p>
+      <Button onClick={onOpen}>Add an account</Button>
     </div>
   );
 };

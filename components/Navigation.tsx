@@ -40,7 +40,7 @@ const Navigation = () => {
         <SheetContent className="px-2" side="left">
           <SheetHeader>
             <SheetTitle>Finance</SheetTitle>
-            <SheetDescription>Where you want to go?</SheetDescription>
+            <SheetDescription>Where do you want to go?</SheetDescription>
           </SheetHeader>
           <nav className="flex flex-col gap-y-2 pt-6">
             {routes.map((route) => (
