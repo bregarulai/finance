@@ -3,3 +3,9 @@ declare type NavButtonProps = {
   label: string;
   isActive: boolean;
 };
+
+declare type NewAccountState = {
+  isOpen: boolean;
+  onClose: () => void;
+  onOpen: () => void;
+};
