@@ -8,12 +8,15 @@ import {
 import { useNewAccount } from "../hooks/useNewAccount";
 import AccountForm from "./AccountForm";
 import { FormValues } from "@/types";
+import { useCreateAccount } from "../api/useCreateAcount";
 
 const NewAccountSheet = () => {
   const { isOpen, onClose } = useNewAccount();
 
+  const mutation = useCreateAccount();
+
   const onSubmit = (values: FormValues) => {
-    console.log({ values });
+    mutation.mutate(values, { onSuccess: () => onClose() });
   };
   return (
     <Sheet open={isOpen} onOpenChange={onClose}>
@@ -26,7 +29,7 @@ const NewAccountSheet = () => {
         </SheetHeader>
         <AccountForm
           onSubmit={onSubmit}
-          disabled={false}
+          disabled={mutation.isPending}
           defaultValues={{ name: "" }}
         />
       </SheetContent>
