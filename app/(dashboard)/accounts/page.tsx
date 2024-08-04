@@ -5,6 +5,27 @@ import { Plus } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useNewAccount } from "@/features/accounts/hooks/useNewAccount";
+import {
+  accountsColumns,
+  Payment,
+} from "@/features/accounts/components/accountCulumns";
+import { CustomDataTable } from "@/components/CustomDataTable";
+
+const data: Payment[] = [
+  {
+    id: "728ed52f",
+    amount: 100,
+    status: "pending",
+    email: "m@example.com",
+  },
+  {
+    id: "728ed67f",
+    amount: 100,
+    status: "processing",
+    email: "a@example2.com",
+  },
+  // ...
+];
 
 const AccountsPage = () => {
   const newAccount = useNewAccount();
@@ -18,6 +39,13 @@ const AccountsPage = () => {
             Add new
           </Button>
         </CardHeader>
+        <CardContent>
+          <CustomDataTable
+            filterKey="email"
+            data={data}
+            columns={accountsColumns}
+          />
+        </CardContent>
       </Card>
     </div>
   );
