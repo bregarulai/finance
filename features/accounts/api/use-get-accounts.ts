@@ -1,4 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
+
 import { client } from "@/lib/hono";
 import { QKey } from "@/constants";
 
@@ -16,6 +17,4 @@ export const useGetAccounts = () => {
       return data;
     },
   });
-
-  return query;
 };
