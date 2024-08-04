@@ -6,15 +6,19 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useNewAccount } from "@/features/accounts/hooks/useNewAccount";
 import { accountsColumns } from "@/features/accounts/components/accountColumns";
-import { CustomDataTable } from "@/components/CustomDataTable";
 import { useGetAccounts } from "@/features/accounts/api/useGetAccounts";
+import { useBulkDeleteAccounts } from "@/features/accounts/api/useBulkDelete";
+import { CustomDataTable } from "@/components/CustomDataTable";
 import { Skeleton } from "@/components/ui/skeleton";
 
 const AccountsPage = () => {
   const newAccount = useNewAccount();
   const accountsQuery = useGetAccounts();
+  const deleteAccounts = useBulkDeleteAccounts();
 
   const accounts = accountsQuery.data || [];
+
+  const isDisabled = accountsQuery.isLoading || deleteAccounts.isPending;
 
   if (accountsQuery.isLoading) {
     return (
@@ -47,7 +51,11 @@ const AccountsPage = () => {
             filterKey="email"
             data={accounts}
             columns={accountsColumns}
-            onDelete={() => {}}
+            onDelete={(row) => {
+              const ids = row.map((r) => r.original.id);
+              deleteAccounts.mutate({ ids });
+            }}
+            disabled={isDisabled}
           />
         </CardContent>
       </Card>

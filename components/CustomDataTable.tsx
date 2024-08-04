@@ -78,6 +78,10 @@ export function CustomDataTable<TData, TValue>({
             size="sm"
             variant="outline"
             disabled={disabled}
+            onClick={() => {
+              onDelete(table.getFilteredSelectedRowModel().rows);
+              table.resetRowSelection();
+            }}
           >
             <TrashIcon className="mr-2 size-4 text-slate-500" />
             Delete ({table.getFilteredSelectedRowModel().rows.length})
