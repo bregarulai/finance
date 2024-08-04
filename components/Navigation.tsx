@@ -5,7 +5,14 @@ import { usePathname, useRouter } from "next/navigation";
 import { useMedia } from "react-use";
 import { Menu } from "lucide-react";
 
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import {
+  Sheet,
+  SheetContent,
+  SheetDescription,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
 import { routes } from "@/constants";
 import NavButton from "./NavButton";
 import { Button } from "./ui/button";
@@ -25,12 +32,16 @@ const Navigation = () => {
   if (isMobile) {
     return (
       <Sheet open={isOpen} onOpenChange={setIsOpen}>
-        <SheetTrigger>
+        <SheetTrigger asChild>
           <Button className="shad-btn-menu" variant="outline" size="sm">
             <Menu className="size-4" />
           </Button>
         </SheetTrigger>
         <SheetContent className="px-2" side="left">
+          <SheetHeader>
+            <SheetTitle>Finance</SheetTitle>
+            <SheetDescription>Where you want to go?</SheetDescription>
+          </SheetHeader>
           <nav className="flex flex-col gap-y-2 pt-6">
             {routes.map((route) => (
               <Button
