@@ -1,6 +1,8 @@
 import { z } from "zod";
+import { InferResponseType } from "hono";
 
 import { accountFormValidation } from "@/lib/validation";
+import { client } from "@/lib/hono";
 
 declare type NavButtonProps = {
   href: string;
@@ -23,3 +25,8 @@ declare type AccountFormProps = {
   onDelete?: () => void;
   disabled?: boolean;
 };
+
+declare type AccountColumsType = InferResponseType<
+  typeof client.api.accounts.$get,
+  200
+>["data"][0];

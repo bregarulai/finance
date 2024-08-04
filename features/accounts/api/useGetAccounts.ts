@@ -17,4 +17,5 @@ export const useGetAccounts = () => {
       return data;
     },
   });
+  return query;
 };

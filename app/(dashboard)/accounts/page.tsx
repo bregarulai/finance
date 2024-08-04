@@ -1,34 +1,37 @@
 "use client";
 
-import { Plus } from "lucide-react";
+import { Loader2, Plus } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useNewAccount } from "@/features/accounts/hooks/useNewAccount";
-import {
-  accountsColumns,
-  Payment,
-} from "@/features/accounts/components/accountCulumns";
+import { accountsColumns } from "@/features/accounts/components/accountColumns";
 import { CustomDataTable } from "@/components/CustomDataTable";
-
-const data: Payment[] = [
-  {
-    id: "728ed52f",
-    amount: 100,
-    status: "pending",
-    email: "m@example.com",
-  },
-  {
-    id: "728ed67f",
-    amount: 100,
-    status: "processing",
-    email: "a@example2.com",
-  },
-  // ...
-];
+import { useGetAccounts } from "@/features/accounts/api/useGetAccounts";
+import { Skeleton } from "@/components/ui/skeleton";
 
 const AccountsPage = () => {
   const newAccount = useNewAccount();
+  const accountsQuery = useGetAccounts();
+
+  const accounts = accountsQuery.data || [];
+
+  if (accountsQuery.isLoading) {
+    return (
+      <div className="max-w-screen-2xl mx-auto w-full pb-10 -mt-24">
+        <Card className="border-none drop-shadow-sm">
+          <CardHeader>
+            <Skeleton className="h-8 w-48 animate-pulse" />
+          </CardHeader>
+          <CardContent>
+            <div className="h-[500px] w-full flex items-center justify-center">
+              <Loader2 className="size-6 animate-spin text-slate-300" />
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+    );
+  }
   return (
     <div className="max-w-screen-2xl mx-auto w-full pb-10 -mt-24">
       <Card className="border-none drop-shadow-sm">
@@ -42,7 +45,7 @@ const AccountsPage = () => {
         <CardContent>
           <CustomDataTable
             filterKey="email"
-            data={data}
+            data={accounts}
             columns={accountsColumns}
             onDelete={() => {}}
           />
