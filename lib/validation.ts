@@ -1,5 +1,5 @@
-import { insertAccountsSchema } from "@/db/schema";
+import { insertAccountSchema } from "@/db/schema";
 
-export const accountFormValidation = insertAccountsSchema.pick({
+export const accountFormValidation = insertAccountSchema.pick({
   name: true,
 });

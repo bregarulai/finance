@@ -8,7 +8,7 @@ export const accounts = pgTable("accounts", {
   name: text("name").notNull(),
 });
 
-export const insertAccountsSchema = createInsertSchema(accounts);
+export const insertAccountSchema = createInsertSchema(accounts);
 
 export const categories = pgTable("categories", {
   id: text("id").primaryKey(),
@@ -17,4 +17,4 @@ export const categories = pgTable("categories", {
   name: text("name").notNull(),
 });
 
-export const insertCategoriesSchema = createInsertSchema(categories);
+export const insertCategorySchema = createInsertSchema(categories);
