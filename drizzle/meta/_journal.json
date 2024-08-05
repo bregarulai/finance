@@ -15,6 +15,13 @@
       "when": 1722748839360,
       "tag": "0001_military_rocket_raccoon",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1722882620913,
+      "tag": "0002_famous_northstar",
+      "breakpoints": true
     }
   ]
 }
