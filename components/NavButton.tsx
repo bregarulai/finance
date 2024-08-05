@@ -2,6 +2,7 @@ import Link from "next/link";
 
 import { Button } from "./ui/button";
 import { cn } from "@/lib/utils";
+import { NavButtonProps } from "@/types";
 
 const NavButton = ({ href, label, isActive }: NavButtonProps) => {
   return (

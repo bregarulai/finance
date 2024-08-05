@@ -4,21 +4,21 @@ import { InferResponseType } from "hono";
 import { accountFormValidation } from "@/lib/validation";
 import { client } from "@/lib/hono";
 
-declare type NavButtonProps = {
+export type NavButtonProps = {
   href: string;
   label: string;
   isActive: boolean;
 };
 
-declare type NewAccountState = {
+export type NewAccountState = {
   isOpen: boolean;
   onClose: () => void;
   onOpen: () => void;
 };
 
-declare type FormValues = z.input<typeof accountFormValidation>;
+export type FormValues = z.input<typeof accountFormValidation>;
 
-declare type AccountFormProps = {
+export type AccountFormProps = {
   id?: string;
   defaultValues?: FormValues;
   onSubmit: (values: FormValues) => void;
@@ -26,7 +26,14 @@ declare type AccountFormProps = {
   disabled?: boolean;
 };
 
-declare type AccountColumsType = InferResponseType<
+export type AccountColumsType = InferResponseType<
   typeof client.api.accounts.$get,
   200
 >["data"][0];
+
+export type OpenAccountState = {
+  id?: string;
+  isOpen: boolean;
+  onClose: () => void;
+  onOpen: (id: string) => void;
+};
