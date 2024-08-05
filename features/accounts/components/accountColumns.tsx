@@ -6,6 +6,7 @@ import { ArrowUpDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { AccountColumsType } from "@/types";
+import Actions from "./Actions";
 
 export const accountsColumns: ColumnDef<AccountColumsType>[] = [
   {
@@ -43,5 +44,9 @@ export const accountsColumns: ColumnDef<AccountColumsType>[] = [
         </Button>
       );
     },
+  },
+  {
+    id: "actions",
+    cell: ({ row }) => <Actions id={row.original.id} />,
   },
 ];

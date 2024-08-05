@@ -37,3 +37,7 @@ export type OpenAccountState = {
   onClose: () => void;
   onOpen: (id: string) => void;
 };
+
+export type ActionsProps = {
+  id: string;
+};

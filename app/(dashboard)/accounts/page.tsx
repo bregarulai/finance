@@ -48,7 +48,7 @@ const AccountsPage = () => {
         </CardHeader>
         <CardContent>
           <CustomDataTable
-            filterKey="email"
+            filterKey="name"
             data={accounts}
             columns={accountsColumns}
             onDelete={(row) => {
