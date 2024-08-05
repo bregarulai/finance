@@ -23,4 +23,5 @@ export const routes = [
 
 export enum QKey {
   ACCOUNTS = "accounts",
+  ACCOUNT = "account",
 }
