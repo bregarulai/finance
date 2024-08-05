@@ -9,12 +9,12 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { ActionsProps } from "@/types";
+import { AccountActionsProps } from "@/types";
 import { useOpenAccount } from "@/features/accounts/hooks/useOpenAccount";
 import { useDeleteAccount } from "../api/useDeleteAcount";
 import { useConfirm } from "@/hooks/useConfirm";
 
-const Actions = ({ id }: ActionsProps) => {
+const AccountActions = ({ id }: AccountActionsProps) => {
   const [ConfirmDialog, confirm] = useConfirm(
     "Are you sure?",
     "You are about to delete this account."
@@ -60,4 +60,4 @@ const Actions = ({ id }: ActionsProps) => {
   );
 };
 
-export default Actions;
+export default AccountActions;

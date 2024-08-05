@@ -9,24 +9,24 @@ import {
   FormItem,
   FormLabel,
 } from "@/components/ui/form";
-import { accountFormValidation } from "@/lib/validation";
-import { AccountFormProps, AccountFormValues } from "@/types";
+import { categoryFormValidation } from "@/lib/validation";
+import { CategoryFormProps, CategoryFormValues } from "@/types";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 
-const AccountForm = ({
+const CategoryForm = ({
   id,
   defaultValues,
   onSubmit,
   onDelete,
   disabled,
-}: AccountFormProps) => {
-  const form = useForm<AccountFormValues>({
-    resolver: zodResolver(accountFormValidation),
+}: CategoryFormProps) => {
+  const form = useForm<CategoryFormValues>({
+    resolver: zodResolver(categoryFormValidation),
     defaultValues,
   });
 
-  const handleSubmit = (values: AccountFormValues) => {
+  const handleSubmit = (values: CategoryFormValues) => {
     onSubmit(values);
   };
 
@@ -48,7 +48,7 @@ const AccountForm = ({
               <FormControl>
                 <Input
                   disabled={disabled}
-                  placeholder="e.g. Cash, Bank, Credit Card"
+                  placeholder="e.g. Food, Travel, etc."
                   {...field}
                 />
               </FormControl>
@@ -56,7 +56,7 @@ const AccountForm = ({
           )}
         />
         <Button disabled={disabled}>
-          {id ? "Save changes" : "Create account"}
+          {id ? "Save changes" : "Create category"}
         </Button>
 
         {!!id && (
@@ -67,7 +67,7 @@ const AccountForm = ({
             variant="outline"
           >
             <Trash className="size-4" />
-            <span className="ml-2">Delete account</span>
+            <span className="ml-2">Delete category</span>
           </Button>
         )}
       </form>
@@ -75,4 +75,4 @@ const AccountForm = ({
   );
 };
 
-export default AccountForm;
+export default CategoryForm;

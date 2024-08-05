@@ -6,27 +6,27 @@ import { client } from "@/lib/hono";
 import { QKey } from "@/constants";
 
 type ResponseType = InferResponseType<
-  (typeof client.api.accounts)[":id"]["$delete"]
+  (typeof client.api.categories)[":id"]["$delete"]
 >;
 
-export const useDeleteAccount = (id?: string) => {
+export const useDeleteCategory = (id?: string) => {
   const queryClient = useQueryClient();
 
   const mutation = useMutation<ResponseType, Error>({
     mutationFn: async () => {
-      const response = await client.api.accounts[":id"]["$delete"]({
+      const response = await client.api.categories[":id"]["$delete"]({
         param: { id },
       });
       return await response.json();
     },
     onSuccess: () => {
-      toast.success("Account deleted successfully");
-      queryClient.invalidateQueries({ queryKey: [QKey.ACCOUNT, { id }] });
-      queryClient.invalidateQueries({ queryKey: [QKey.ACCOUNTS] });
+      toast.success("Category deleted successfully");
+      queryClient.invalidateQueries({ queryKey: [QKey.CATEGORY, { id }] });
+      queryClient.invalidateQueries({ queryKey: [QKey.CATEGORIES] });
       // TODO: Invalidate summary and transactions
     },
     onError: () => {
-      toast.error("Failed to delete account");
+      toast.error("Failed to delete category");
     },
   });
 

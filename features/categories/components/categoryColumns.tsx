@@ -5,10 +5,10 @@ import { ArrowUpDown } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
-import { AccountColumsType } from "@/types";
-import AccountActions from "./AccountActions";
+import { CategoryColumsType } from "@/types";
+import CategoryActions from "./CategoryActions";
 
-export const accountsColumns: ColumnDef<AccountColumsType>[] = [
+export const categoriesColumns: ColumnDef<CategoryColumsType>[] = [
   {
     id: "select",
     header: ({ table }) => (
@@ -47,6 +47,6 @@ export const accountsColumns: ColumnDef<AccountColumsType>[] = [
   },
   {
     id: "actions",
-    cell: ({ row }) => <AccountActions id={row.original.id} />,
+    cell: ({ row }) => <CategoryActions id={row.original.id} />,
   },
 ];
