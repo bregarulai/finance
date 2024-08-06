@@ -69,6 +69,25 @@ const TransactionForm = ({
             </FormItem>
           )}
         />
+        <FormField
+          name="categoryId"
+          control={form.control}
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Category</FormLabel>
+              <FormControl>
+                <CustomSelect
+                  placeholder="Select an account"
+                  options={categoryOptions}
+                  onChange={field.onChange}
+                  onCreate={onCreateCategory}
+                  disabled={disabled}
+                  value={field.value}
+                />
+              </FormControl>
+            </FormItem>
+          )}
+        />
         <Button disabled={disabled}>
           {id ? "Save changes" : "Create transaction"}
         </Button>
