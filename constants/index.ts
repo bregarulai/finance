@@ -26,4 +26,6 @@ export enum QKey {
   ACCOUNT = "account",
   CATEGORIES = "categories",
   CATEGORY = "category",
+  TRANSACTIONS = "transactions",
+  TRANSACTION = "transaction",
 }
