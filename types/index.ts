@@ -1,5 +1,6 @@
 import { z } from "zod";
 import { InferResponseType } from "hono";
+import { SelectSingleEventHandler } from "react-day-picker";
 
 import {
   accountFormValidation,
@@ -122,4 +123,10 @@ export type CustomSelectProps = {
   value?: string | null | undefined;
   disabled?: boolean;
   placeholder?: string;
+};
+
+export type CustomDatePickerProps = {
+  value?: Date;
+  onChange: SelectSingleEventHandler;
+  disabled?: boolean;
 };
