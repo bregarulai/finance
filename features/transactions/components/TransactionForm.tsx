@@ -77,7 +77,7 @@ const TransactionForm = ({
               <FormLabel>Category</FormLabel>
               <FormControl>
                 <CustomSelect
-                  placeholder="Select an account"
+                  placeholder="Select a category"
                   options={categoryOptions}
                   onChange={field.onChange}
                   onCreate={onCreateCategory}
