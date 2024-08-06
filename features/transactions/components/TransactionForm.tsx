@@ -10,15 +10,11 @@ import {
   FormLabel,
 } from "@/components/ui/form";
 import { transactionFormValidation } from "@/lib/validation";
-import {
-  AccountFormProps,
-  AccountFormValues,
-  TransactionFormProps,
-  TransactionFormValues,
-} from "@/types";
+import { TransactionFormProps, TransactionFormValues } from "@/types";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import CustomSelect from "@/components/CustomSelect";
+import CustomDatePicker from "@/components/CustomDatePicker";
 
 const TransactionForm = ({
   id,
@@ -50,6 +46,21 @@ const TransactionForm = ({
         className="flex flex-col gap-4"
         onSubmit={form.handleSubmit(handleSubmit)}
       >
+        <FormField
+          name="date"
+          control={form.control}
+          render={({ field }) => (
+            <FormItem>
+              <FormControl>
+                <CustomDatePicker
+                  value={field.value}
+                  onChange={field.onChange}
+                  disabled={disabled}
+                />
+              </FormControl>
+            </FormItem>
+          )}
+        />
         <FormField
           name="accountId"
           control={form.control}
