@@ -9,25 +9,36 @@ import {
   FormItem,
   FormLabel,
 } from "@/components/ui/form";
-import { accountFormValidation } from "@/lib/validation";
-import { AccountFormProps, AccountFormValues } from "@/types";
+import { transactionFormValidation } from "@/lib/validation";
+import {
+  AccountFormProps,
+  AccountFormValues,
+  TransactionFormProps,
+  TransactionFormValues,
+} from "@/types";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import CustomSelect from "@/components/CustomSelect";
 
-const AccountForm = ({
+const TransactionForm = ({
   id,
   defaultValues,
   onSubmit,
   onDelete,
   disabled,
-}: AccountFormProps) => {
-  const form = useForm<AccountFormValues>({
-    resolver: zodResolver(accountFormValidation),
+  accountOptions,
+  categoryOptions,
+  onCreateAccount,
+  onCreateCategory,
+}: TransactionFormProps) => {
+  const form = useForm<TransactionFormValues>({
+    resolver: zodResolver(transactionFormValidation),
     defaultValues,
   });
 
-  const handleSubmit = (values: AccountFormValues) => {
-    onSubmit(values);
+  const handleSubmit = (values: TransactionFormValues) => {
+    // onSubmit(values);
+    console.log({ values });
   };
 
   const handleDelete = () => {
@@ -40,23 +51,26 @@ const AccountForm = ({
         onSubmit={form.handleSubmit(handleSubmit)}
       >
         <FormField
-          name="name"
+          name="accountId"
           control={form.control}
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Name</FormLabel>
+              <FormLabel>Account</FormLabel>
               <FormControl>
-                <Input
+                <CustomSelect
+                  placeholder="Select an account"
+                  options={accountOptions}
+                  onChange={field.onChange}
+                  onCreate={onCreateAccount}
                   disabled={disabled}
-                  placeholder="e.g. Cash, Bank, Credit Card"
-                  {...field}
+                  value={field.value}
                 />
               </FormControl>
             </FormItem>
           )}
         />
         <Button disabled={disabled}>
-          {id ? "Save changes" : "Create account"}
+          {id ? "Save changes" : "Create transaction"}
         </Button>
 
         {!!id && (
@@ -67,7 +81,7 @@ const AccountForm = ({
             variant="outline"
           >
             <Trash className="size-4" />
-            <span className="ml-2">Delete account</span>
+            <span className="ml-2">Delete transaction</span>
           </Button>
         )}
       </form>
@@ -75,4 +89,4 @@ const AccountForm = ({
   );
 };
 
-export default AccountForm;
+export default TransactionForm;

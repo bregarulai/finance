@@ -1,8 +1,8 @@
 import { create } from "zustand";
 
-import { NewAccountState } from "@/types";
+import { NewTransactionState } from "@/types";
 
-export const useNewAccount = create<NewAccountState>((set) => ({
+export const useNewTransaction = create<NewTransactionState>((set) => ({
   isOpen: false,
   onClose: () => set({ isOpen: false }),
   onOpen: () => set({ isOpen: true }),
