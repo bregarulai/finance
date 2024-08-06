@@ -13,6 +13,7 @@ import { transactionFormValidation } from "@/lib/validation";
 import { TransactionFormProps, TransactionFormValues } from "@/types";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import { Textarea } from "@/components/ui/textarea";
 import CustomSelect from "@/components/CustomSelect";
 import CustomDatePicker from "@/components/CustomDatePicker";
 
@@ -94,6 +95,39 @@ const TransactionForm = ({
                   onCreate={onCreateCategory}
                   disabled={disabled}
                   value={field.value}
+                />
+              </FormControl>
+            </FormItem>
+          )}
+        />
+        <FormField
+          name="payee"
+          control={form.control}
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Payee</FormLabel>
+              <FormControl>
+                <Input
+                  disabled={disabled}
+                  placeholder="Add a payee"
+                  {...field}
+                />
+              </FormControl>
+            </FormItem>
+          )}
+        />
+        <FormField
+          name="notes"
+          control={form.control}
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Notes</FormLabel>
+              <FormControl>
+                <Textarea
+                  {...field}
+                  value={field.value ?? ""}
+                  disabled={disabled}
+                  placeholder="Optional notes"
                 />
               </FormControl>
             </FormItem>
