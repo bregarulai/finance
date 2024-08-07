@@ -17,6 +17,7 @@ import { Textarea } from "@/components/ui/textarea";
 import CustomSelect from "@/components/CustomSelect";
 import CustomDatePicker from "@/components/CustomDatePicker";
 import AmountInput from "@/components/AmountInput";
+import { convertAmountToMiliunits } from "@/lib/utils";
 
 const TransactionForm = ({
   id,
@@ -35,8 +36,12 @@ const TransactionForm = ({
   });
 
   const handleSubmit = (values: TransactionFormValues) => {
-    // onSubmit(values);
-    console.log({ values });
+    const amount = parseFloat(values.amount);
+    const amountInMiliunits = convertAmountToMiliunits(amount);
+    onSubmit({
+      ...values,
+      amount: amountInMiliunits,
+    });
   };
 
   const handleDelete = () => {
@@ -109,9 +114,9 @@ const TransactionForm = ({
               <FormLabel>Payee</FormLabel>
               <FormControl>
                 <Input
+                  {...field}
                   disabled={disabled}
                   placeholder="Add a payee"
-                  {...field}
                 />
               </FormControl>
             </FormItem>
