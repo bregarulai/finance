@@ -22,7 +22,7 @@ const AmountInput = ({
   const isIncome = parsedValue > 0;
   const isExpense = parsedValue < 0;
 
-  const onREverseValue = () => {
+  const onReverseValue = () => {
     if (!value) return;
 
     const newValue = parseFloat(value) * -1;
@@ -36,7 +36,7 @@ const AmountInput = ({
           <TooltipTrigger asChild>
             <button
               type="button"
-              onClick={onREverseValue}
+              onClick={onReverseValue}
               className={cn(
                 "bg-slate-400 hover:bg-slate-500 absolute top-1.5 left-1.5 rounded-md p-2 flex items-center justify-center, transition",
                 isIncome && "bg-emerald-500 hover:bg-emerald-600",

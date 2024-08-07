@@ -116,6 +116,15 @@ export type TransactionFormProps = {
   onCreateCategory: (name: string) => void;
 };
 
+export type TransactionColumsType = InferResponseType<
+  typeof client.api.transactions.$get,
+  200
+>["data"][0];
+
+export type TransactionActionsProps = {
+  id: string;
+};
+
 export type CustomSelectProps = {
   onChange: (value?: string) => void;
   onCreate: (value: string) => void;

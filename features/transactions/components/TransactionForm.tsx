@@ -114,9 +114,9 @@ const TransactionForm = ({
               <FormLabel>Payee</FormLabel>
               <FormControl>
                 <Input
-                  {...field}
                   disabled={disabled}
                   placeholder="Add a payee"
+                  {...field}
                 />
               </FormControl>
             </FormItem>
@@ -130,9 +130,9 @@ const TransactionForm = ({
               <FormLabel>Amount</FormLabel>
               <FormControl>
                 <AmountInput
-                  {...field}
                   disabled={disabled}
                   placeholder="0.00"
+                  {...field}
                 />
               </FormControl>
             </FormItem>
