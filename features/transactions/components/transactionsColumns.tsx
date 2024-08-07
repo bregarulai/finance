@@ -10,6 +10,8 @@ import { TransactionColumsType } from "@/types";
 import { formatCurrency } from "@/lib/utils";
 import TransactionActions from "./TransactionActions";
 import { Badge } from "@/components/ui/badge";
+import TransactionAccountColumn from "@/app/(dashboard)/transactions/_components/TransactionAccountColumn";
+import TransactionCategoryColumn from "@/app/(dashboard)/transactions/_components/TransactionCategoryColumn";
 
 export const transactionsColumns: ColumnDef<TransactionColumsType>[] = [
   {
@@ -71,7 +73,11 @@ export const transactionsColumns: ColumnDef<TransactionColumsType>[] = [
     },
     cell: ({ row }) => {
       return (
-        <span className="text-sm text-gray-500">{row.original.category}</span>
+        <TransactionCategoryColumn
+          id={row.original.id}
+          category={row.original.category}
+          categoryId={row.original.categoryId}
+        />
       );
     },
   },
@@ -129,7 +135,10 @@ export const transactionsColumns: ColumnDef<TransactionColumsType>[] = [
     },
     cell: ({ row }) => {
       return (
-        <span className="text-sm text-gray-500">{row.original.account}</span>
+        <TransactionAccountColumn
+          account={row.original.account}
+          accountId={row.original.accountId}
+        />
       );
     },
   },

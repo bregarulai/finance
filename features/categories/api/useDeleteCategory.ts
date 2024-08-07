@@ -23,7 +23,8 @@ export const useDeleteCategory = (id?: string) => {
       toast.success("Category deleted successfully");
       queryClient.invalidateQueries({ queryKey: [QKey.CATEGORY, { id }] });
       queryClient.invalidateQueries({ queryKey: [QKey.CATEGORIES] });
-      // TODO: Invalidate summary and transactions
+      queryClient.invalidateQueries({ queryKey: [QKey.TRANSACTIONS] });
+      // TODO: Invalidate summary
     },
     onError: () => {
       toast.error("Failed to delete category");

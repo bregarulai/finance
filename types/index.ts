@@ -82,6 +82,12 @@ export type CategoryActionsProps = {
   id: string;
 };
 
+export type TransactionCategoryColumnProps = {
+  id: string;
+  category: string | null;
+  categoryId: string | null;
+};
+
 // TRANSACTIONS TYPES
 export type OpenTransactionState = {
   id?: string;
@@ -123,6 +129,11 @@ export type TransactionColumsType = InferResponseType<
 
 export type TransactionActionsProps = {
   id: string;
+};
+
+export type TransactionAccountColumnProps = {
+  account: string;
+  accountId: string;
 };
 
 export type CustomSelectProps = {
