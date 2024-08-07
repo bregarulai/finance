@@ -161,3 +161,20 @@ export type AmountInputProps = {
 export type UploadButtonProps = {
   onUpload: (results: any) => void;
 };
+
+export type ImportCardProps = {
+  data: string[][];
+  onCancel: () => void;
+  onSubmit: (data: any) => void;
+};
+
+export type SelectedColumnsState = {
+  [key: string]: string | null;
+};
+
+export type ImportTableProps = {
+  headers: string[];
+  body: string[][];
+  selectedColumns: Record<string, string | null>;
+  onTableHeadSelectChange: (columnIndex: number, value: string | null) => void;
+};

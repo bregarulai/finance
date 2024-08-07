@@ -11,11 +11,23 @@ import { useBulkDeleteTransactions } from "@/features/transactions/api/useBulkDe
 import { CustomDataTable } from "@/components/CustomDataTable";
 import { Skeleton } from "@/components/ui/skeleton";
 import { transactionsColumns } from "@/features/transactions/components/transactionsColumns";
-import { Variants } from "@/constants";
+import { INITIAL_IMPORT_RESULTS, Variants } from "@/constants";
 import UploadButton from "./_components/UploadButton";
+import ImportCard from "./_components/ImportCard";
 
 const TransactionsPage = () => {
   const [variant, setVariant] = useState<Variants>(Variants.LIST);
+  const [importResults, setImportResults] = useState(INITIAL_IMPORT_RESULTS);
+
+  const onUpload = (results: typeof INITIAL_IMPORT_RESULTS) => {
+    setImportResults(results);
+    setVariant(Variants.IMPORT);
+  };
+
+  const onCancelImport = () => {
+    setImportResults(INITIAL_IMPORT_RESULTS);
+    setVariant(Variants.LIST);
+  };
 
   const newTransaction = useNewTransaction();
   const transactionsQuery = useGetTransactions();
@@ -46,7 +58,11 @@ const TransactionsPage = () => {
   if (variant === Variants.IMPORT) {
     return (
       <>
-        <div>This is a screen for import</div>
+        <ImportCard
+          data={importResults.data}
+          onCancel={onCancelImport}
+          onSubmit={() => {}}
+        />
       </>
     );
   }
@@ -62,7 +78,7 @@ const TransactionsPage = () => {
               <Plus className="size-4 mr-2" />
               Add new
             </Button>
-            <UploadButton onUpload={() => {}} />
+            <UploadButton onUpload={onUpload} />
           </div>
         </CardHeader>
         <CardContent>

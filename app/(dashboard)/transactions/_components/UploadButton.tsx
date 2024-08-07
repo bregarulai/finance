@@ -9,7 +9,7 @@ const UploadButton = ({ onUpload }: UploadButtonProps) => {
 
   // TODO: add a paywall
   return (
-    <CSVReader>
+    <CSVReader onUploadAccepted={onUpload} accept=".csv">
       {({ getRootProps }: any) => (
         <Button size="sm" className="w-full lg:w-auto" {...getRootProps()}>
           <Upload className="mr-2 size-4" />
