@@ -57,7 +57,7 @@ const TransactionsPage = () => {
           <CardTitle className="text-xl line-clamp-1">
             Transactions History
           </CardTitle>
-          <div className="flex gap-x-2">
+          <div className="flex flex-col lg:flex-row gap-2">
             <Button size="sm" onClick={newTransaction.onOpen}>
               <Plus className="size-4 mr-2" />
               Add new
