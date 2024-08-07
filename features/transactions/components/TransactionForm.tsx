@@ -16,6 +16,7 @@ import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import CustomSelect from "@/components/CustomSelect";
 import CustomDatePicker from "@/components/CustomDatePicker";
+import AmountInput from "@/components/AmountInput";
 
 const TransactionForm = ({
   id,
@@ -111,6 +112,22 @@ const TransactionForm = ({
                   disabled={disabled}
                   placeholder="Add a payee"
                   {...field}
+                />
+              </FormControl>
+            </FormItem>
+          )}
+        />
+        <FormField
+          name="amount"
+          control={form.control}
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Amount</FormLabel>
+              <FormControl>
+                <AmountInput
+                  {...field}
+                  disabled={disabled}
+                  placeholder="0.00"
                 />
               </FormControl>
             </FormItem>
