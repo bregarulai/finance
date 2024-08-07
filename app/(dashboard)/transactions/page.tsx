@@ -51,7 +51,7 @@ const TransactionsPage = () => {
         </CardHeader>
         <CardContent>
           <CustomDataTable
-            filterKey="date"
+            filterKey="payee"
             data={transactions}
             columns={transactionsColumns}
             onDelete={(row) => {
