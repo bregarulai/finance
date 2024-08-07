@@ -4,10 +4,12 @@ import { ImportCardProps, SelectedColumnsState } from "@/types";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import ImportTable from "./ImportTable";
+import { requiredOptions } from "@/constants";
 
 const ImportCard = ({ data, onCancel, onSubmit }: ImportCardProps) => {
-  const [setselectedColumns, setSelectedColumns] =
-    useState<SelectedColumnsState>({});
+  const [selectedColumns, setSelectedColumns] = useState<SelectedColumnsState>(
+    {}
+  );
 
   const headers = data[0];
   const body = data.slice(1);
@@ -34,6 +36,8 @@ const ImportCard = ({ data, onCancel, onSubmit }: ImportCardProps) => {
     });
   };
 
+  const progress = Object.values(selectedColumns).filter(Boolean).length;
+
   return (
     <div className="max-w-screen-2xl mx-auto w-full pb-10 -mt-24">
       <Card className="border-none drop-shadow-sm">
@@ -45,13 +49,20 @@ const ImportCard = ({ data, onCancel, onSubmit }: ImportCardProps) => {
             <Button size="sm" onClick={onCancel}>
               Cancel
             </Button>
+            <Button
+              size="sm"
+              disabled={progress < requiredOptions.length}
+              onClick={() => {}}
+            >
+              Continue ({progress} / {requiredOptions.length})
+            </Button>
           </div>
         </CardHeader>
         <CardContent>
           <ImportTable
             headers={headers}
             body={body}
-            selectedColumns={setselectedColumns}
+            selectedColumns={selectedColumns}
             onTableHeadSelectChange={onTableHeadSelectChange}
           />
         </CardContent>

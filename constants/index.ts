@@ -46,4 +46,4 @@ export const outputFormat = "yyyy-MM-dd";
 
 export const requiredOptions = ["amount", "date", "payee"];
 
-export const options = ["amount", "payee", "notes", "date"];
+export const options = ["amount", "payee", "date"];
