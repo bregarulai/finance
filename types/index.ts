@@ -157,3 +157,7 @@ export type AmountInputProps = {
   placeholder?: string;
   disabled?: boolean;
 };
+
+export type UploadButtonProps = {
+  onUpload: (results: any) => void;
+};

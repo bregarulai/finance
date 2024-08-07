@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { Loader2, Plus } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
@@ -10,8 +11,12 @@ import { useBulkDeleteTransactions } from "@/features/transactions/api/useBulkDe
 import { CustomDataTable } from "@/components/CustomDataTable";
 import { Skeleton } from "@/components/ui/skeleton";
 import { transactionsColumns } from "@/features/transactions/components/transactionsColumns";
+import { Variants } from "@/constants";
+import UploadButton from "./_components/UploadButton";
 
 const TransactionsPage = () => {
+  const [variant, setVariant] = useState<Variants>(Variants.LIST);
+
   const newTransaction = useNewTransaction();
   const transactionsQuery = useGetTransactions();
   const deleteTransactions = useBulkDeleteTransactions();
@@ -37,6 +42,14 @@ const TransactionsPage = () => {
       </div>
     );
   }
+
+  if (variant === Variants.IMPORT) {
+    return (
+      <>
+        <div>This is a screen for import</div>
+      </>
+    );
+  }
   return (
     <div className="max-w-screen-2xl mx-auto w-full pb-10 -mt-24">
       <Card className="border-none drop-shadow-sm">
@@ -44,10 +57,13 @@ const TransactionsPage = () => {
           <CardTitle className="text-xl line-clamp-1">
             Transactions History
           </CardTitle>
-          <Button size="sm" onClick={newTransaction.onOpen}>
-            <Plus className="size-4 mr-2" />
-            Add new
-          </Button>
+          <div className="flex gap-x-2">
+            <Button size="sm" onClick={newTransaction.onOpen}>
+              <Plus className="size-4 mr-2" />
+              Add new
+            </Button>
+            <UploadButton onUpload={() => {}} />
+          </div>
         </CardHeader>
         <CardContent>
           <CustomDataTable

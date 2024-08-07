@@ -29,3 +29,14 @@ export enum QKey {
   TRANSACTIONS = "transactions",
   TRANSACTION = "transaction",
 }
+
+export enum Variants {
+  LIST = "LIST",
+  IMPORT = "IMPORT",
+}
+
+export const INITIAL_IMPORT_RESULTS = {
+  data: [],
+  errors: [],
+  meta: {},
+};
