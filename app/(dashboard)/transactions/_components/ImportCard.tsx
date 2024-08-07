@@ -1,10 +1,13 @@
 import { useState } from "react";
+import { format, parse } from "date-fns";
 
 import { ImportCardProps, SelectedColumnsState } from "@/types";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import ImportTable from "./ImportTable";
-import { requiredOptions } from "@/constants";
+import { dateFormat, outputFormat, requiredOptions } from "@/constants";
+import { convertAmountToMiliunits } from "@/lib/utils";
+import { on } from "events";
 
 const ImportCard = ({ data, onCancel, onSubmit }: ImportCardProps) => {
   const [selectedColumns, setSelectedColumns] = useState<SelectedColumnsState>(
@@ -38,6 +41,58 @@ const ImportCard = ({ data, onCancel, onSubmit }: ImportCardProps) => {
 
   const progress = Object.values(selectedColumns).filter(Boolean).length;
 
+  const handleContinue = () => {
+    // Helper function to get the index from the column name
+    const getColumnIndex = (column: string) => {
+      return column.split("_")[1];
+    };
+
+    // Map the selected columns to headers and body data
+    const mappedData = {
+      headers: headers.map((_header, index) => {
+        const columnIndex = getColumnIndex(`column_${index}`);
+        return selectedColumns[`column_${columnIndex}`] || null;
+      }),
+      body: body
+        .map((row) => {
+          // Transform each row based on the selected columns
+          const transformedRow = row.map((cell, index) => {
+            const columnIndex = getColumnIndex(`column_${index}`);
+            return selectedColumns[`column_${columnIndex}`] ? cell : null;
+          });
+
+          // Filter out rows that have all null values
+          return transformedRow.every((item) => item === null)
+            ? []
+            : transformedRow;
+        })
+        .filter((row) => row.length > 0),
+    };
+
+    // Convert the mapped data into an array of objects
+    const arrayOfData = mappedData.body.map((row) => {
+      return row.reduce((acc: any, cell, index) => {
+        const header = mappedData.headers[index];
+
+        // Only add non-null headers to the object
+        if (header !== null) {
+          acc[header] = cell;
+        }
+        return acc;
+      }, {});
+    });
+
+    // Format the data array with specific transformations for amount and date
+    const formattedData = arrayOfData.map((item) => ({
+      ...item,
+      amount: convertAmountToMiliunits(parseFloat(item.amount)),
+      date: format(parse(item.date, dateFormat, new Date()), outputFormat),
+    }));
+
+    // Submit the formatted data
+    onSubmit(formattedData);
+  };
+
   return (
     <div className="max-w-screen-2xl mx-auto w-full pb-10 -mt-24">
       <Card className="border-none drop-shadow-sm">
@@ -52,7 +107,7 @@ const ImportCard = ({ data, onCancel, onSubmit }: ImportCardProps) => {
             <Button
               size="sm"
               disabled={progress < requiredOptions.length}
-              onClick={() => {}}
+              onClick={handleContinue}
             >
               Continue ({progress} / {requiredOptions.length})
             </Button>
