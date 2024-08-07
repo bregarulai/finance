@@ -7,6 +7,7 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { ImportTableProps } from "@/types";
+import TableHeadSelect from "./TableHeadSelect";
 
 const ImportTable = ({
   headers,
@@ -14,14 +15,19 @@ const ImportTable = ({
   selectedColumns,
   onTableHeadSelectChange,
 }: ImportTableProps) => {
-  console.log(headers);
   return (
     <div className="rounded-md border overflow-hidden">
       <Table>
         <TableHeader className="bg-muted">
           <TableRow>
             {headers.map((_item, index) => (
-              <TableHead key={index}>{index}</TableHead>
+              <TableHead key={index}>
+                <TableHeadSelect
+                  columnIndex={index}
+                  selectedColumns={selectedColumns}
+                  onChange={onTableHeadSelectChange}
+                />
+              </TableHead>
             ))}
           </TableRow>
         </TableHeader>

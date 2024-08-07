@@ -178,3 +178,9 @@ export type ImportTableProps = {
   selectedColumns: Record<string, string | null>;
   onTableHeadSelectChange: (columnIndex: number, value: string | null) => void;
 };
+
+export type TableHeadSelectProps = {
+  columnIndex: number;
+  selectedColumns: Record<string, string | null>;
+  onChange: (columnIndex: number, value: string | null) => void;
+};
