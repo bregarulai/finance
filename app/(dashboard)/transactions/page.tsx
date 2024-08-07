@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { Loader2, Plus } from "lucide-react";
+import { toast } from "sonner";
 
 import { transactions as transactionsSchema } from "@/db/schema";
 import { Button } from "@/components/ui/button";
@@ -15,8 +16,11 @@ import { transactionsColumns } from "@/features/transactions/components/transact
 import { INITIAL_IMPORT_RESULTS, Variants } from "@/constants";
 import UploadButton from "./_components/UploadButton";
 import ImportCard from "./_components/ImportCard";
+import { useSelectAccount } from "@/features/accounts/hooks/useSelectAccount";
+import { useBulkCreateTransactions } from "@/features/transactions/api/useBulkCreateTransactions";
 
 const TransactionsPage = () => {
+  const [AccountDialog, confirm] = useSelectAccount();
   const [variant, setVariant] = useState<Variants>(Variants.LIST);
   const [importResults, setImportResults] = useState(INITIAL_IMPORT_RESULTS);
 
@@ -32,6 +36,7 @@ const TransactionsPage = () => {
 
   const newTransaction = useNewTransaction();
   const transactionsQuery = useGetTransactions();
+  const createTransactions = useBulkCreateTransactions();
   const deleteTransactions = useBulkDeleteTransactions();
 
   const transactions = transactionsQuery.data || [];
@@ -41,7 +46,24 @@ const TransactionsPage = () => {
 
   const onSubmitImport = async (
     values: (typeof transactionsSchema.$inferInsert)[]
-  ) => {};
+  ) => {
+    const accountId = await confirm();
+    if (!accountId) {
+      return toast.error("Please select an account to continue");
+    }
+
+    const data = values.map((value) => ({
+      ...value,
+      accountId: accountId as string,
+    }));
+
+    createTransactions.mutate(data, {
+      onSuccess: () => {
+        toast.success("Transactions created successfully");
+        onCancelImport();
+      },
+    });
+  };
 
   if (transactionsQuery.isLoading) {
     return (
@@ -63,6 +85,7 @@ const TransactionsPage = () => {
   if (variant === Variants.IMPORT) {
     return (
       <>
+        <AccountDialog />
         <ImportCard
           data={importResults.data}
           onCancel={onCancelImport}
