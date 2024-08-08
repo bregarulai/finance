@@ -238,3 +238,10 @@ export type PieVariantProps = {
     value: number;
   }[];
 };
+
+export type RadarVariantProps = {
+  data: {
+    name: string;
+    value: number;
+  }[];
+};

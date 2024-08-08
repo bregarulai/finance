@@ -15,6 +15,7 @@ import BarVariant from "./BarVariant";
 import LineVariant from "./LineVariant";
 import { chartTypes } from "@/constants";
 import PieVariant from "./PieVariant";
+import RadarVariant from "./RadarVariant";
 
 const SpendingPie = ({ data = [] }: SpendingPieProps) => {
   const [chartType, setChartType] = useState<ChartTypes>(chartTypes.PIE);
@@ -65,8 +66,8 @@ const SpendingPie = ({ data = [] }: SpendingPieProps) => {
         ) : (
           <>
             {chartType === chartTypes.PIE && <PieVariant data={data} />}
-            {/* {chartType === chartTypes.RADAR && <AreaVariant data={data} />}
-            {chartType === chartTypes.RADIAL && <BarVariant data={data} />} */}
+            {chartType === chartTypes.RADAR && <RadarVariant data={data} />}
+            {/* {chartType === chartTypes.RADIAL && <BarVariant data={data} />} */}
           </>
         )}
       </CardContent>
