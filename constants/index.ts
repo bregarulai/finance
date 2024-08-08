@@ -36,6 +36,12 @@ export enum Variants {
   IMPORT = "IMPORT",
 }
 
+export enum chartTypes {
+  AREA = "area",
+  BAR = "bar",
+  LINE = "line",
+}
+
 export const INITIAL_IMPORT_RESULTS = {
   data: [],
   errors: [],

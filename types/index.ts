@@ -199,6 +199,8 @@ export type ChartProps = {
   }[];
 };
 
+export type ChartTypes = "area" | "bar" | "line";
+
 export type AreaVariantProps = {
   data: {
     date: string;
