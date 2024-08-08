@@ -110,3 +110,22 @@ export const formatDateRange = (period?: Period) => {
   // If both 'from' and 'to' dates are provided, format only the 'from' date
   return format(period.from, "LLL dd, y");
 };
+
+// Function to format a number as a percentage, with an optional prefix for positive values
+export const formatPercentage = (
+  value: number,
+  options: { addPrefix?: boolean } = { addPrefix: false } // Optional parameter to add a prefix
+) => {
+  // Format the value as a percentage using the Intl.NumberFormat API
+  const result = Intl.NumberFormat("en-US", {
+    style: "percent", // Specifies that the number should be formatted as a percentage
+  }).format(value / 100); // Divides the value by 100 to get the correct percentage format
+
+  // If addPrefix is true and the value is positive, add a "+" prefix
+  if (options.addPrefix && value > 0) {
+    return `+${result}`;
+  }
+
+  // Return the formatted percentage
+  return result;
+};
