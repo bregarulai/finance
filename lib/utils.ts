@@ -1,6 +1,7 @@
 import { type ClassValue, clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
-import { eachDayOfInterval, isSameDay } from "date-fns";
+import { eachDayOfInterval, isSameDay, subDays, format } from "date-fns";
+import { Period } from "@/types";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -81,4 +82,31 @@ export const fillMissingDays = (
 
   // Return the list of transactions with filled missing days
   return transactionsByDay;
+};
+
+// Function to format a date range based on a given period or default to the last 30 days
+export const formatDateRange = (period?: Period) => {
+  // Set the default end date to today
+  const defaultTo = new Date();
+  // Set the default start date to 30 days before today
+  const defaultFrom = subDays(defaultTo, 30);
+
+  // If the 'from' date in the period is not provided, use the default range
+  if (!period?.from) {
+    return `${format(defaultFrom, "LLL dd")} - ${format(
+      defaultTo,
+      "LLL dd, y"
+    )}`;
+  }
+
+  // If the 'to' date in the period is not provided, format the range using the 'from' date to today
+  if (!period.to) {
+    return `${format(period.from, "LLL dd")} - ${format(
+      defaultTo,
+      "LLL dd, y"
+    )}`;
+  }
+
+  // If both 'from' and 'to' dates are provided, format only the 'from' date
+  return format(period.from, "LLL dd, y");
 };

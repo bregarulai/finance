@@ -185,3 +185,8 @@ export type TableHeadSelectProps = {
   selectedColumns: Record<string, string | null>;
   onChange: (columnIndex: number, value: string | null) => void;
 };
+
+export type Period = {
+  from: string | Date | undefined;
+  to: string | Date | number;
+};
