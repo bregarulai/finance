@@ -2,6 +2,8 @@ import { ChartProps } from "@/types";
 import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
 import { FileSearch } from "lucide-react";
 import AreaVariant from "./AreaVariant";
+import BarVariant from "./BarVariant";
+import LineVariant from "./LineVariant";
 
 const Chart = ({ data = [] }: ChartProps) => {
   return (
@@ -19,7 +21,9 @@ const Chart = ({ data = [] }: ChartProps) => {
             </p>
           </div>
         ) : (
-          <AreaVariant data={data} />
+          // <AreaVariant data={data} />
+          // <BarVariant data={data} />
+          <LineVariant data={data} />
         )}
       </CardContent>
     </Card>

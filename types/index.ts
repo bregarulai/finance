@@ -206,3 +206,19 @@ export type AreaVariantProps = {
     expenses: number;
   }[];
 };
+
+export type BarVariantProps = {
+  data: {
+    date: string;
+    income: number;
+    expenses: number;
+  }[];
+};
+
+export type LineVariantProps = {
+  data: {
+    date: string;
+    income: number;
+    expenses: number;
+  }[];
+};
