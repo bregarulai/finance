@@ -1,8 +1,10 @@
 "use client";
 
 import { useGetSummary } from "@/features/summary/api/useGetSummary";
-import Chart, { ChartLoading } from "./Chart";
-import SpendingPie, { SpendingPieLoading } from "./SpendingPie";
+import Chart, { ChartLoading } from "@/components/dataCharts/Chart";
+import SpendingPie, {
+  SpendingPieLoading,
+} from "@/components/dataCharts/SpendingPie";
 
 const DataCharts = () => {
   const { data, isLoading } = useGetSummary();

@@ -14,13 +14,13 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "./ui/select";
-import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
-import AreaVariant from "./AreaVariant";
-import BarVariant from "./BarVariant";
-import LineVariant from "./LineVariant";
+} from "@/components/ui/select";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import AreaVariant from "@/components/dataCharts/AreaVariant";
+import BarVariant from "@/components/dataCharts/BarVariant";
+import LineVariant from "@/components/dataCharts/LineVariant";
 import { chartTypes } from "@/constants";
-import { Skeleton } from "./ui/skeleton";
+import { Skeleton } from "@/components/ui/skeleton";
 
 const Chart = ({ data = [] }: ChartProps) => {
   const [chartType, setChartType] = useState<ChartTypes>(chartTypes.AREA);

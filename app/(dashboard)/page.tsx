@@ -1,5 +1,5 @@
-import DataCharts from "@/components/DataCharts";
-import DataGrid from "@/components/DataGrid";
+import DataCharts from "@/components/dataCharts/DataCharts";
+import DataGrid from "@/components/dataGrid/DataGrid";
 
 const DashboardPage = () => {
   return (

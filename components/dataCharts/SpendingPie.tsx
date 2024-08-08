@@ -8,13 +8,13 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "./ui/select";
-import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
+} from "@/components/ui/select";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { chartTypes } from "@/constants";
-import PieVariant from "./PieVariant";
-import RadarVariant from "./RadarVariant";
-import RadialVariant from "./RadialVariant";
-import { Skeleton } from "./ui/skeleton";
+import PieVariant from "@/components/dataCharts/PieVariant";
+import RadarVariant from "@/components/dataCharts/RadarVariant";
+import RadialVariant from "@/components/dataCharts/RadialVariant";
+import { Skeleton } from "@/components/ui/skeleton";
 
 const SpendingPie = ({ data = [] }: SpendingPieProps) => {
   const [chartType, setChartType] = useState<ChartTypes>(chartTypes.PIE);

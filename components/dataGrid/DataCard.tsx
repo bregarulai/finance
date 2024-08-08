@@ -8,9 +8,9 @@ import {
   CardDescription,
   CardHeader,
   CardTitle,
-} from "./ui/card";
-import { CountUp } from "./CountUp";
-import { Skeleton } from "./ui/skeleton";
+} from "@/components/ui/card";
+import { CountUp } from "@/components/dataCharts/CountUp";
+import { Skeleton } from "@/components/ui/skeleton";
 
 const boxVariant = cva("shrink-0 rounded-md p-3", {
   variants: {

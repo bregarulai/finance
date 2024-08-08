@@ -10,7 +10,7 @@ import {
 import { formatPercentage } from "@/lib/utils";
 import { COLORS } from "@/constants";
 import { PieVariantProps } from "@/types";
-import CategoryTooltip from "./CategoryTooltip";
+import CategoryTooltip from "@/components/dataCharts/CategoryTooltip";
 
 const PieVariant = ({ data }: PieVariantProps) => {
   return (

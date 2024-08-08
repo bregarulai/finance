@@ -1,7 +1,7 @@
 import { format } from "date-fns";
 
 import { formatCurrency } from "@/lib/utils";
-import { Separator } from "./ui/separator";
+import { Separator } from "../ui/separator";
 
 const CustomTooltip = ({ active, payload }: any) => {
   if (!active) return null;

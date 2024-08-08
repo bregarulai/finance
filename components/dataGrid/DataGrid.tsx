@@ -6,7 +6,7 @@ import { FaArrowTrendUp, FaArrowTrendDown } from "react-icons/fa6";
 
 import { formatDateRange } from "@/lib/utils";
 import { useGetSummary } from "@/features/summary/api/useGetSummary";
-import DataCard, { DataCardLoading } from "./DataCard";
+import DataCard, { DataCardLoading } from "@/components/dataGrid/DataCard";
 
 const DataGrid = () => {
   const { data, isLoading } = useGetSummary();
