@@ -9,7 +9,7 @@ import {
 import { format } from "date-fns";
 
 import { AreaVariantProps } from "@/types";
-import CustomTooltip from "./CustomTooltip";
+import CustomTooltip from "@/components/dataCharts/CustomTooltip";
 
 const AreaVariant = ({ data }: AreaVariantProps) => {
   return (

@@ -8,7 +8,7 @@ import {
 } from "recharts";
 import { format } from "date-fns";
 
-import CustomTooltip from "./CustomTooltip";
+import CustomTooltip from "@/components/dataCharts/CustomTooltip";
 import { LineVariantProps } from "@/types";
 
 const LineVariant = ({ data }: LineVariantProps) => {
