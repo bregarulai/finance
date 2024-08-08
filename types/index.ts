@@ -245,3 +245,10 @@ export type RadarVariantProps = {
     value: number;
   }[];
 };
+
+export type RadialVariantProps = {
+  data: {
+    name: string;
+    value: number;
+  }[];
+};
