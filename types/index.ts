@@ -190,3 +190,19 @@ export type Period = {
   from: string | Date | undefined;
   to: string | Date | number;
 };
+
+export type ChartProps = {
+  data?: {
+    date: string;
+    income: number;
+    expenses: number;
+  }[];
+};
+
+export type AreaVariantProps = {
+  data: {
+    date: string;
+    income: number;
+    expenses: number;
+  }[];
+};
