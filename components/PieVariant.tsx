@@ -10,6 +10,7 @@ import {
 import { formatPercentage } from "@/lib/utils";
 import { COLORS } from "@/constants";
 import { PieVariantProps } from "@/types";
+import CategoryTooltip from "./CategoryTooltip";
 
 const PieVariant = ({ data }: PieVariantProps) => {
   return (
@@ -46,6 +47,7 @@ const PieVariant = ({ data }: PieVariantProps) => {
             );
           }}
         />
+        <Tooltip content={<CategoryTooltip />} />
         <Pie
           data={data}
           cx="50%"
