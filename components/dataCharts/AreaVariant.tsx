@@ -10,8 +10,11 @@ import { format } from "date-fns";
 
 import { AreaVariantProps } from "@/types";
 import CustomTooltip from "@/components/dataCharts/CustomTooltip";
+import { useEffect } from "react";
+import { useRemoveXAxisWarning } from "@/hooks/useRemoveXAxisWarning";
 
 const AreaVariant = ({ data }: AreaVariantProps) => {
+  useRemoveXAxisWarning();
   return (
     <ResponsiveContainer width="100%" height={350}>
       <AreaChart data={data}>
