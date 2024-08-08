@@ -119,6 +119,7 @@ export const formatPercentage = (
   // Format the value as a percentage using the Intl.NumberFormat API
   const result = Intl.NumberFormat("en-US", {
     style: "percent", // Specifies that the number should be formatted as a percentage
+    maximumSignificantDigits: 2, // Limits the number of significant digits to 2
   }).format(value / 100); // Divides the value by 100 to get the correct percentage format
 
   // If addPrefix is true and the value is positive, add a "+" prefix
