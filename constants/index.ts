@@ -28,6 +28,7 @@ export enum QKey {
   CATEGORY = "category",
   TRANSACTIONS = "transactions",
   TRANSACTION = "transaction",
+  SUMMARY = "summary",
 }
 
 export enum Variants {
