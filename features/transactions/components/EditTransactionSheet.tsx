@@ -18,7 +18,6 @@ import { useGetCategories } from "@/features/categories/api/useGetCategories";
 import { useCreateCategory } from "@/features/categories/api/useCreateCategory";
 import { useGetAccounts } from "@/features/accounts/api/useGetAccounts";
 import { useCreateAccount } from "@/features/accounts/api/useCreateAcount";
-import { convertAmountFromMiliunits } from "@/lib/utils";
 
 const EditTransactionSheet = () => {
   const { isOpen, onClose, id } = useOpenTransaction();
@@ -83,9 +82,7 @@ const EditTransactionSheet = () => {
         accountId: transactionQuery.data.accountId,
         categoryId: transactionQuery.data.categoryId,
         payee: transactionQuery.data.payee,
-        amount: convertAmountFromMiliunits(
-          transactionQuery.data.amount
-        ).toString(),
+        amount: transactionQuery.data.amount.toString(),
         notes: transactionQuery.data.notes,
         date: transactionQuery.data.date
           ? new Date(transactionQuery.data.date)

@@ -156,6 +156,7 @@ export type AmountInputProps = {
   onChange: (value: string | undefined) => void;
   placeholder?: string;
   disabled?: boolean;
+  ref?: any;
 };
 
 export type UploadButtonProps = {
