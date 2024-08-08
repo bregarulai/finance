@@ -199,7 +199,7 @@ export type ChartProps = {
   }[];
 };
 
-export type ChartTypes = "area" | "bar" | "line";
+export type ChartTypes = "area" | "bar" | "line" | "pie" | "radar" | "radial";
 
 export type AreaVariantProps = {
   data: {
@@ -222,5 +222,19 @@ export type LineVariantProps = {
     date: string;
     income: number;
     expenses: number;
+  }[];
+};
+
+export type SpendingPieProps = {
+  data?: {
+    name: string;
+    value: number;
+  }[];
+};
+
+export type PieVariantProps = {
+  data: {
+    name: string;
+    value: number;
   }[];
 };

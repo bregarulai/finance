@@ -40,6 +40,9 @@ export enum chartTypes {
   AREA = "area",
   BAR = "bar",
   LINE = "line",
+  PIE = "pie",
+  RADAR = "radar",
+  RADIAL = "radial",
 }
 
 export const INITIAL_IMPORT_RESULTS = {
@@ -54,3 +57,5 @@ export const outputFormat = "yyyy-MM-dd";
 export const requiredOptions = ["amount", "date", "payee"];
 
 export const options = ["amount", "payee", "date"];
+
+export const COLORS = ["#0062ff", "#12C6ff", "#ff647f", "#ff9354"];
