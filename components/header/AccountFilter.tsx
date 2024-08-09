@@ -10,8 +10,8 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { useGetAccounts } from "@/features/accounts/api/useGetAccounts";
 import { useGetSummary } from "@/features/summary/api/useGetSummary";
+import { useGetAccounts } from "@/features/accounts/api/useGetAccounts";
 import { FILTERS_DEFAULT_VALUE } from "@/constants";
 
 const AccountFilter = () => {

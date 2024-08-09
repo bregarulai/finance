@@ -12,11 +12,10 @@ const DataGrid = () => {
   const { data, isLoading } = useGetSummary();
 
   const params = useSearchParams();
-  const to = params.get("to") || undefined;
-  const from = params.get("from") || undefined;
-  const parsedTo = parseFloat(to!);
+  const to = params.get("to") || "";
+  const from = params.get("from") || "";
 
-  const dateRangeLabel = formatDateRange({ to: parsedTo, from: from });
+  const dateRangeLabel = formatDateRange({ to, from });
 
   if (isLoading) {
     return (

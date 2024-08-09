@@ -100,7 +100,7 @@ export const formatDateRange = (period?: Period) => {
   }
 
   // If the 'to' date in the period is not provided, format the range using the 'from' date to today
-  if (!period.to) {
+  if (!!period.to) {
     return `${format(period.from, "LLL dd")} - ${format(
       defaultTo,
       "LLL dd, y"
