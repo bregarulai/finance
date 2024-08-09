@@ -59,3 +59,5 @@ export const requiredOptions = ["amount", "date", "payee"];
 export const options = ["amount", "payee", "date"];
 
 export const COLORS = ["#0062ff", "#12C6ff", "#ff647f", "#ff9354"];
+
+export const FILTERS_DEFAULT_VALUE = "all";
