@@ -14,8 +14,8 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { routes } from "@/constants";
-import NavButton from "./NavButton";
-import { Button } from "./ui/button";
+import NavButton from "@/components/header/NavButton";
+import { Button } from "@/components/ui/button";
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);

@@ -1,4 +1,4 @@
-import AccountFilter from "@/components/AccountFilter";
+import AccountFilter from "@/components/header/AccountFilter";
 
 const Filters = () => {
   return (
